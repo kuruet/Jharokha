@@ -6,7 +6,7 @@
 
 
 ## 🚀 Live Demo
-🔗 https://jharokha.vercel.app 
+🔗 https://jharokha-six.vercel.app/
 
 ---
 
