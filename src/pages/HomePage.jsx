@@ -99,10 +99,12 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative h-[80vh] sm:h-[90vh] overflow-hidden group">
         <img
-src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85"
-className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[10000ms] ease-in-out"className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[10000ms] ease-in-out"className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[10000ms] ease-in-out"        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85"  alt="Foggy forest landscape"
+  className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[10000ms] ease-in-out"
+/>
+
+<div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/10" />
+<div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
 
         {/* Floating blobs */}
         <div className="pointer-events-none absolute -top-16 -left-16 w-72 h-72 rounded-full bg-green-500/10 blur-3xl animate-pulse" />
