@@ -97,14 +97,14 @@ export default function HomePage() {
     <div className="bg-stone-50 min-h-screen">
 
       {/* Hero */}
-      <section className="relative h-[80vh] sm:h-[90vh] overflow-hidden group">
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center overflow-hidden group">
         <img
-src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85"  alt="Foggy forest landscape"
-  className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[10000ms] ease-in-out"
-/>
-
-<div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/10" />
-<div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+          src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=85"
+          alt="Dramatic mountains with fog"
+          className="absolute inset-0 w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[10000ms] ease-in-out"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
 
         {/* Floating blobs */}
         <div className="pointer-events-none absolute -top-16 -left-16 w-72 h-72 rounded-full bg-green-500/10 blur-3xl animate-pulse" />
@@ -118,42 +118,48 @@ src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fi
             backgroundSize: "200px 200px",
           }}
         />
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto flex flex-col items-center">
+
+        <div className="relative w-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-0 overflow-hidden">
+          <div className="w-full max-w-2xl sm:max-w-3xl mx-auto flex flex-col items-center">
             <span className="hero-fade-1 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-semibold tracking-widest uppercase mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
               Discover Jharkhand
             </span>
-            <h1 className="hero-fade-2 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
+
+            <h1 className="hero-fade-2 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight md:leading-[1.1] tracking-tight px-2 sm:px-0 break-words">
               Discover the{" "}
               <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                 Natural Beauty
               </span>{" "}
               of Jharkhand
             </h1>
-            <p className="hero-fade-3 mt-5 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
+
+            <p className="hero-fade-3 mt-5 text-sm sm:text-base md:text-lg text-white/60 max-w-md sm:max-w-xl leading-relaxed px-3 sm:px-0">
               Waterfalls, misty highlands, and ancient temples — experience the
               soul of India's heartland with local guides and immersive 360° previews.
             </p>
+
             <Link
               to="/locations"
-              className="hero-fade-4 mt-8 inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold text-sm shadow-lg shadow-orange-900/50 hover:shadow-orange-900/70 hover:-translate-y-1 hover:scale-[1.02] active:translate-y-0 active:scale-100 transition-all duration-200"
+              className="hero-fade-4 mt-6 sm:mt-8 inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold text-sm sm:text-base shadow-lg shadow-orange-900/50 hover:shadow-orange-900/70 hover:-translate-y-1 hover:scale-[1.02] active:translate-y-0 active:scale-100 transition-all duration-200"
             >
               Explore Now
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <div className="hero-fade-5 mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10">
+
+            <div className="hero-fade-5 mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-10">
               {stats.map(({ value, label }) => (
                 <div key={label} className="flex flex-col items-center gap-1">
-                  <span className="text-2xl font-extrabold text-white">{value}</span>
-                  <span className="text-xs text-white/40 uppercase tracking-wider">{label}</span>
+                  <span className="text-xl sm:text-2xl font-extrabold text-white">{value}</span>
+                  <span className="text-[10px] sm:text-xs text-white/40 uppercase tracking-wider">{label}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
+
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
             <path d="M0 60L60 50C120 40 240 20 360 15C480 10 600 20 720 28C840 36 960 40 1080 36C1200 32 1320 20 1380 14L1440 8V60H0Z" fill="#f9fafb" />
