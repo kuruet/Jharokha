@@ -1,16 +1,93 @@
-# React + Vite
+# 🌄 Jharokha — Explore Jharkhand Like Never Before
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A modern, responsive travel web application to discover destinations, view itineraries, book local guides, and explore nearby places — all in one place.
 
-Currently, two official plugins are available:
+<img width="1913" height="991" alt="image" src="https://github.com/user-attachments/assets/55523f58-7f23-49ae-9ee9-ec993ac10fb6" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+## 🚀 Live Demo
+🔗 https://jharokha.vercel.app 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🌿 **Explore Destinations**
+- Browse curated locations across Jharkhand
+- Categorized (Waterfalls, Hills, Religious, etc.)
+
+🧭 **Itinerary System**
+- Day-wise travel plans
+- Expandable & interactive timeline UI
+
+👤 **Guide Booking System**
+- Book local guides
+- Booking confirmation UI with details
+
+⭐ **Reviews System**
+- Location-based user reviews
+- Ratings + testimonials
+
+📍 **Nearby Places**
+- Discover nearby attractions
+- Encourages deeper exploration
+
+🎥 **AR/Preview Experience**
+- Preview destinations before visiting
+
+🎨 **Modern UI/UX**
+- Fully responsive (mobile → desktop)
+- Smooth animations & transitions
+- Premium travel website feel
+
+---
+
+## 🧠 Tech Stack
+
+- ⚛️ React (Vite)
+- 🎨 Tailwind CSS
+- 🔁 React Router
+- 🧩 Context API (Booking system)
+- ☁️ Vercel (Deployment)
+
+---
+
+## 📁 Folder Structure
+
+```bash
+Jharokha/
+│
+├── public/
+│
+├── src/
+│   ├── components/
+│   │   ├── arvr/
+│   │   │   └── ARPreviewModal.jsx
+│   │   ├── booking/
+│   │   │   └── BookingModal.jsx
+│   │   ├── itinerary/
+│   │   │   └── ItineraryTimeline.jsx
+│   │   ├── location/
+│   │   │   ├── LocationCard.jsx
+│   │   │   ├── Reviews.jsx
+│   │   │   └── NearbyPlaces.jsx
+│   │
+│   ├── context/
+│   │   └── BookingContext.jsx
+│   │
+│   ├── data/
+│   │   ├── locations.js
+│   │   ├── itineraries.js
+│   │   └── reviews.js
+│   │
+│   ├── pages/
+│   │   ├── HomePage.jsx
+│   │   ├── LocationsPage.jsx
+│   │   └── LocationDetailsPage.jsx
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── vercel.json
+├── package.json
+└── README.md
