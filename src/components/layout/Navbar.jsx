@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "Locations", to: "/locations" },
+  { label: "My Bookings", to: "/bookings" },
 ];
 
 export default function Navbar() {
@@ -36,33 +37,24 @@ export default function Navbar() {
       <div className="w-full px-5 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo */}
           <Link
             to="/"
             className="flex items-center gap-2 group select-none shrink-0"
             aria-label="Jharokha – Go to homepage"
           >
-            {/* Icon mark */}
             <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 shadow-md shadow-orange-200 group-hover:scale-105 transition-transform duration-200">
-              <svg
-                viewBox="0 0 20 20"
-                fill="none"
-                className="w-4 h-4 text-white"
-                aria-hidden="true"
-              >
+              <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4 text-white" aria-hidden="true">
                 <path
                   d="M10 2C6.686 2 4 4.686 4 8c0 4.418 6 10 6 10s6-5.582 6-10c0-3.314-2.686-6-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z"
                   fill="currentColor"
                 />
               </svg>
             </span>
-            {/* Wordmark */}
             <span className="font-bold text-xl tracking-tight text-stone-800 group-hover:text-orange-600 transition-colors duration-200">
               Jharokha
             </span>
           </Link>
 
-          {/* Desktop Nav Links */}
           <ul className="hidden md:flex items-center gap-1" role="list">
             {navLinks.map(({ label, to }) => (
               <li key={to}>
@@ -75,7 +67,6 @@ export default function Navbar() {
                   }`}
                 >
                   {label}
-                  {/* Active underline */}
                   <span
                     className={`absolute bottom-1 left-4 right-4 h-0.5 rounded-full bg-orange-500 transition-transform duration-200 origin-left ${
                       isActive(to) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
@@ -86,7 +77,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
           <div className="hidden md:flex items-center shrink-0">
             <Link
               to="/locations"
@@ -102,7 +92,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Hamburger */}
           <button
             className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition-colors duration-150"
             onClick={() => setMenuOpen((prev) => !prev)}
@@ -137,7 +126,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
       <div
         id="mobile-menu"
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
