@@ -4,6 +4,8 @@ import locations from "../data/locations";
 import BookingModal from "../components/booking/BookingModal";
 import ItineraryTimeline from "../components/itinerary/ItineraryTimeline";
 import ARPreviewModal from "../components/arvr/ARPreviewModal";
+import Reviews from "../components/location/Reviews";
+import NearbyPlaces from "../components/location/NearbyPlaces";
 import { useBooking } from "../context/BookingContext";
 
 export default function LocationDetailsPage() {
@@ -67,15 +69,103 @@ export default function LocationDetailsPage() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-6">
 
-        {/* About */}
-        <div className="bg-white rounded-2xl shadow-sm border border-stone-100 p-6 sm:p-10 transition-all duration-300 hover:shadow-md">
-          <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <span className="w-1 h-5 bg-green-500 rounded-full inline-block" />
-            About this destination
-          </h2>
-          <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-            {location.description}
-          </p>
+        {/* About — enhanced multi-section card */}
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-100 p-6 sm:p-10 transition-all duration-300 hover:shadow-md space-y-8">
+
+          {/* Detailed Description */}
+          <div>
+            <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+              <span className="w-1 h-5 bg-green-500 rounded-full inline-block" />
+              About this destination
+            </h2>
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
+              {location.detailedDescription || location.description}
+            </p>
+            {location.rating && (
+              <div className="mt-4 flex items-center gap-2">
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <svg
+                      key={i}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className={`w-4 h-4 ${
+                        i < Math.floor(location.rating)
+                          ? "text-amber-400"
+                          : i < location.rating
+                          ? "text-amber-300"
+                          : "text-stone-200"
+                      }`}
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-sm font-bold text-gray-700">{location.rating}</span>
+                {location.totalReviews && (
+                  <span className="text-xs text-stone-400">
+                    ({location.totalReviews.toLocaleString()} reviews)
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Highlights */}
+          {location.highlights?.length > 0 && (
+            <div>
+              <div className="w-full h-px bg-gradient-to-r from-stone-100 to-transparent mb-6" />
+              <h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <span>✨</span> Highlights
+              </h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {location.highlights.map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-2.5 text-sm text-gray-600 bg-stone-50 border border-stone-100 rounded-xl px-4 py-3 leading-snug"
+                  >
+                    <span className="mt-0.5 w-1.5 h-1.5 rounded-full bg-green-400 shrink-0 mt-1.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Best Time to Visit */}
+          {location.bestTimeToVisit && (
+            <div>
+              <div className="w-full h-px bg-gradient-to-r from-stone-100 to-transparent mb-6" />
+              <h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <span>📅</span> Best Time to Visit
+              </h3>
+              <span className="inline-flex items-center gap-2 bg-amber-50 border border-amber-100 text-amber-800 text-sm font-semibold px-4 py-2 rounded-full">
+                <span className="w-2 h-2 rounded-full bg-amber-400 inline-block" />
+                {location.bestTimeToVisit}
+              </span>
+            </div>
+          )}
+
+          {/* Travel Tips */}
+          {location.travelTips?.length > 0 && (
+            <div>
+              <div className="w-full h-px bg-gradient-to-r from-stone-100 to-transparent mb-6" />
+              <h3 className="text-base font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <span>💡</span> Travel Tips
+              </h3>
+              <ul className="space-y-2.5">
+                {location.travelTips.map((tip, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-gray-600 leading-relaxed">
+                    <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-orange-100 border border-orange-200 text-orange-500 text-xs font-bold flex items-center justify-center">
+                      {i + 1}
+                    </span>
+                    {tip}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* Booking confirmation badge */}
@@ -172,6 +262,20 @@ export default function LocationDetailsPage() {
             </h2>
             <ItineraryTimeline locationId={location.id} />
           </div>
+        </div>
+
+        {/* Reviews section */}
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-100 p-6 sm:p-10 transition-all duration-300 hover:shadow-md">
+          <Reviews locationId={location.id} />
+        </div>
+
+        {/* Nearby Places section */}
+        <div className="bg-white rounded-2xl shadow-sm border border-stone-100 p-6 sm:p-10 transition-all duration-300 hover:shadow-md">
+          <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+            <span className="w-1 h-5 bg-indigo-500 rounded-full inline-block" />
+            Explore Nearby
+          </h2>
+          <NearbyPlaces currentLocation={location} />
         </div>
 
       </div>
