@@ -41,6 +41,7 @@ export default function LocationDetailsPage() {
   return (
     <div className="min-h-screen bg-stone-50">
 
+      {/* Hero */}
       <div className="relative w-full h-[60vh] sm:h-[70vh] overflow-hidden group">
         <img
           src={location.image}
@@ -66,6 +67,7 @@ export default function LocationDetailsPage() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-6">
 
+        {/* About */}
         <div className="bg-white rounded-2xl shadow-sm border border-stone-100 p-6 sm:p-10 transition-all duration-300 hover:shadow-md">
           <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
             <span className="w-1 h-5 bg-green-500 rounded-full inline-block" />
@@ -76,6 +78,7 @@ export default function LocationDetailsPage() {
           </p>
         </div>
 
+        {/* Booking confirmation badge */}
         {booked && currentBooking && (
           <div className="bg-green-50 border border-green-200 rounded-2xl p-5 sm:p-6 transition-all duration-300">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -107,6 +110,7 @@ export default function LocationDetailsPage() {
           </div>
         )}
 
+        {/* Action buttons */}
         <div className="space-y-3">
           <div className="flex flex-wrap gap-3">
             {!booked ? (
@@ -129,7 +133,13 @@ export default function LocationDetailsPage() {
               onClick={() => setShowItinerary((prev) => !prev)}
               className="flex items-center gap-2 text-sm font-semibold px-6 py-3 rounded-full bg-stone-800 hover:bg-stone-900 text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-offset-2"
             >
-              🗺️ {showItinerary ? "Hide Itinerary" : "View Itinerary"}
+              <span
+                className="inline-block transition-transform duration-300"
+                style={{ transform: showItinerary ? "rotate(180deg)" : "rotate(0deg)" }}
+              >
+                🗺️
+              </span>
+              {showItinerary ? "Hide Itinerary" : "View Itinerary"}
             </button>
 
             <button
@@ -145,17 +155,22 @@ export default function LocationDetailsPage() {
           </p>
         </div>
 
+        {/* Itinerary panel */}
         <div
           className={`overflow-hidden transition-all duration-500 ease-in-out ${
-            showItinerary ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
+            showItinerary ? "max-h-[3000px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <div className="bg-white rounded-2xl shadow-sm border border-stone-100 p-6 sm:p-10">
+          <div
+            className={`bg-white rounded-2xl shadow-sm border border-stone-100 p-6 sm:p-10 transition-all duration-500 ease-in-out ${
+              showItinerary ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+            }`}
+          >
             <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
               <span className="w-1 h-5 bg-orange-500 rounded-full inline-block" />
               Suggested Itinerary
             </h2>
-            <ItineraryTimeline />
+            <ItineraryTimeline locationId={location.id} />
           </div>
         </div>
 
